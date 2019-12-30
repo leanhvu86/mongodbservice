@@ -4,6 +4,7 @@ const auth = require('../routers/auth');
 const Users = mongoose.model('Users');
 const Tokens = require('../models/Token')
 //POST new user route (optional, everyone has access)
+
 exports.create = (auth.optional, (req, res, next) => {
     const { body: { user } } = req;
 
@@ -68,7 +69,7 @@ exports.login = (auth.optional, (req, res, next) => {
             });
             finalUser.token = user.token;
             finalUser.save().then(() => console.log("save token thanh cong"));
-            req.session.user = user;
+            req.session.email = user.email;
             return res.send({
                 "status": 200,
                 user: user.toAuthJSON()
@@ -85,19 +86,86 @@ exports.login = (auth.optional, (req, res, next) => {
 });
 
 //GET current route (required, only authenticated users have access)
-exports.getCurrent = (auth.required, (req, res, next) => {
-    const { body: { user } } = req;
+exports.currentAuthen = (auth.required, (req, res, next) => {
+    const { body: { email } } = req;
+    console.log("email nè" + email);
+    const user = Users.find({
+        occupation: /host/,
+        'user.email': 'leanhvu86@gmail.com'
+    }).limit(10)
+        .sort({ occupation: -1 }).
+        select({ email: 1, occupation: 1 }).
+        exec(callback);
 
-    return Users.findById(user.id)
-        .then((user) => {
-            if (!user) {
-                return res.status(400).send({
-                    message: "can not found current user"
-                });
-            }
-
-            return res.json({ user: user.toAuthJSON() });
+    if (!user) {
+        return res.status(400).send({
+            message: "can not found current user"
         });
+    } else {
+        console.log(" id nguoi dung ne " + user.id);
+        Tokens.findById(user.id).then((tokens) => {
+            if (tokens) {
+                return res.send({
+                    "status": 200,
+                    "token": tokens.token
+                })
+            } else {
+                return res.send({
+                    "status": 401,
+                    "message": "can not found token"
+                })
+            }
+        })
+    }
+
+
+
+
+    // .then((user) => {
+    //         if (!user) {
+    //             return res.status(400).send({
+    //                 message: "can not found current user"
+    //             });
+    //         } else {
+    //             console.log(" id nguoi dung ne " + user.id);
+    //             Tokens.findById(user.id).then((tokens) => {
+    //                 if (tokens) {
+    //                     return res.send({
+    //                         "status": 200,
+    //                         "token": tokens.token
+    //                     })
+    //                 } else {
+    //                     return res.send({
+    //                         "status": 401,
+    //                         "message": "can not found token"
+    //                     })
+    //                 }
+    //             })
+    //         }
+    //     }).catch(error => {
+    //         return res.send({
+    //             "status": 403,
+    //             "message": "current user is not exist"
+    //         });
+    //     })
+
+
+
+
+
+    // return Users.find({ email: email })
+    //     .then((user) => {
+    //         if (!user) {
+    //             return res.status(400).send({
+    //                 message: "can not found current user"
+    //             });
+    //         }
+
+    //         return res.json({
+    //             "status": 200,
+    //             //user: user.toAuthJSON()
+    //         });
+    //     });
 });
 exports.logout = ('/logout', (req, res) => {
     if (req.session.user && req.cookies.token) {

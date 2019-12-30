@@ -83,4 +83,6 @@ module.exports = (app) => {
     app.post('/login', users.login)
 
     app.get('/logout', users.logout)
+
+    app.get('/currentAuthen', users.currentAuthen)
 }
