@@ -6,7 +6,7 @@ const Tokens = require('../models/Token')
 //POST new user route (optional, everyone has access)
 
 exports.create = (auth.optional, (req, res, next) => {
-    const { body: { user } } = req;
+    const {body: {user}} = req;
 
     if (!user.email) {
         return res.status(422).json({
@@ -37,7 +37,7 @@ exports.create = (auth.optional, (req, res, next) => {
 
 //POST login route (optional, everyone has access)
 exports.login = (auth.optional, (req, res, next) => {
-    const { body: { user } } = req;
+    const {body: {user}} = req;
 
     if (!user.email) {
         return res.status(422).json({
@@ -55,7 +55,7 @@ exports.login = (auth.optional, (req, res, next) => {
         });
     }
 
-    return passport.authenticate('local', { session: false }, (err, passportUser, info) => {
+    return passport.authenticate('local', {session: true}, (err, passportUser, info) => {
         if (err) {
             return next(err);
         }
@@ -86,39 +86,44 @@ exports.login = (auth.optional, (req, res, next) => {
 });
 
 //GET current route (required, only authenticated users have access)
-exports.currentAuthen = (auth.required, (req, res, next) => {
-    const { body: { email } } = req;
+exports.currentAuthen = (auth.required, async (req, res, next) => {
+    const {body: {email}} = req;
     console.log("email nè" + email);
-    const user = Users.find({
-        occupation: /host/,
-        'user.email': 'leanhvu86@gmail.com'
-    }).limit(10)
-        .sort({ occupation: -1 }).
-        select({ email: 1, occupation: 1 }).
-        exec(callback);
 
-    if (!user) {
-        return res.status(400).send({
-            message: "can not found current user"
-        });
-    } else {
-        console.log(" id nguoi dung ne " + user.id);
-        Tokens.findById(user.id).then((tokens) => {
-            if (tokens) {
-                return res.send({
-                    "status": 200,
-                    "token": tokens.token
-                })
-            } else {
-                return res.send({
-                    "status": 401,
-                    "message": "can not found token"
-                })
-            }
-        })
-    }
+    await Users.findOne({email: 'leminhanh2014@gmail.com'}, function (err, userObj) {
+        if (err) {
+            console.log(err);
+            return res.send({
+                "status":404,
+                message: "can not found current user"
+            });
+        } else if (userObj) {
+            console.log('Found:', userObj);
 
+            console.log(" id nguoi dung ne " + userObj.id);
+            Tokens.findOne({email: userObj.email}, function (err, tokens) {
+                if (tokens) {
+                    console.log(req.session.token);
+                    return res.send({
+                        "status": 200,
+                        "token": tokens.token
+                    })
+                } else {
+                    return res.send({
+                        "status": 401,
+                        "message": "can not found token"
+                    })
+                }
+            })
 
+        } else {
+            console.log('User not found!');
+            return res.send({
+                "status": 404,
+                'currenAuthenication': 'current user not found'
+            })
+        }
+    });
 
 
     // .then((user) => {
@@ -148,9 +153,6 @@ exports.currentAuthen = (auth.required, (req, res, next) => {
     //             "message": "current user is not exist"
     //         });
     //     })
-
-
-
 
 
     // return Users.find({ email: email })
