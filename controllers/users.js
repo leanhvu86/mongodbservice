@@ -6,7 +6,10 @@ const Tokens = require('../models/Token')
 //POST new user route (optional, everyone has access)
 
 exports.create = (auth.optional, (req, res, next) => {
-    const {body: {user}} = req;
+    var user ={
+        email:req.body.email,
+        password:req.body.password,
+    }
 
     if (!user.email) {
         return res.status(422).json({
