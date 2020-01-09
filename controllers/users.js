@@ -11,6 +11,18 @@ exports.create = (auth.optional, (req, res, next) => {
         password:req.body.password,
     }
 
+    const finalUser = new Users(user);
+
+    Users.findOne({ email: user.email}, function (err, users) {
+        if(users.length > 0){
+            return res.status(422).json({
+                errors: {
+                    email: 'Email existed in system,please input an other email',
+                },
+            });
+        }
+    });
+
     if (!user.email) {
         return res.status(422).json({
             errors: {
@@ -27,7 +39,6 @@ exports.create = (auth.optional, (req, res, next) => {
         });
     }
 
-    const finalUser = new Users(user);
 
     finalUser.setPassword(user.password);
 
