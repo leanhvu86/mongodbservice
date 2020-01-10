@@ -51,7 +51,10 @@ exports.create = (auth.optional, (req, res, next) => {
 
 //POST login route (optional, everyone has access)
 exports.login = (auth.optional, (req, res, next) => {
-    const {body: {user}} = req;
+    var user ={
+        email:req.body.email,
+        password:req.body.password,
+    }
 
     if (!user.email) {
         return res.status(422).json({
@@ -101,7 +104,8 @@ exports.login = (auth.optional, (req, res, next) => {
 
 //GET current route (required, only authenticated users have access)
 exports.currentAuthen = (auth.required, async (req, res, next) => {
-    const {body: {email}} = req;
+    //const {body: {email}} = req;
+    var email = req.body.email;
     console.log("email nè" + email);
 
     await Users.findOne({email: 'leminhanh2014@gmail.com'}, function (err, userObj) {
