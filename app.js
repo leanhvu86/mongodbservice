@@ -43,29 +43,6 @@ var sessionChecker = (req, res, next) => {
         next();
     }
 };
-// //Error handlers & middlewares
-// if (!isProduction) {
-//     app.use((err, req, res) => {
-//         res.status(err.status || 500);
 
-//         res.json({
-//             errors: {
-//                 message: err.message,
-//                 error: err,
-//             },
-//         });
-//     });
-// }
-
-// app.use((err, req, res) => {
-//     res.status(err.status || 500);
-
-//     res.json({
-//         errors: {
-//             message: err.message,
-//             error: {},
-//         },
-//     });
-// });
 
 app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
