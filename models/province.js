@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-
-const ProvinceSchema = new Schema({
+const ProvinceSchema = mongoose.Schema({
     provinceId: { type: String, default: '' },
     provinceName: { type: String, default: '' },
     status: { type: Number, default: 1 }
