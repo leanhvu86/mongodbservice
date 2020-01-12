@@ -55,7 +55,7 @@ exports.login = (auth.optional, (req, res, next) => {
         email:req.body.email,
         password:req.body.password,
     }
-
+    console.log(typeof user.password);
     if (!user.email) {
         return res.status(422).json({
             errors: {
@@ -72,14 +72,29 @@ exports.login = (auth.optional, (req, res, next) => {
         });
     }
 
-    return passport.authenticate('local', {session: true}, (err, passportUser, info) => {
-        if (err) {
-            return next(err);
+    Users.findOne({ email: user.email }, function(err, user) {
+        if(err){
+            return res.send({
+                "status": 401,
+                "message": "Error"
+            })
         }
-        console.log(passportUser);
-        if (passportUser) {
-            const user = passportUser;
-            user.token = passportUser.generateJWT();
+        if (!user) {
+            return res.send({
+                "status": 401,
+                "message": "Username or password invalid"
+            })
+        }
+        if (!user.validatePassword('helldfdo')) {
+            return res.send({
+                "status": 401,
+                "message": "Username or password invalid"
+            })
+        }
+
+        if (user) {
+            const user = new Users;
+            user.token = user.generateJWT();
             req.session.token = user.token;
             const finalUser = new Tokens({
                 email: user.email
@@ -97,9 +112,9 @@ exports.login = (auth.optional, (req, res, next) => {
                 "message": "Account not found"
             })
         }
+      });
 
-        return req.info;
-    })(req, res, next);
+    
 });
 
 //GET current route (required, only authenticated users have access)
