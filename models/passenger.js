@@ -6,6 +6,7 @@ const PassengerSchema = new Schema({
     passengerId: { type: String, default: '' },
     name: { type: String, default: '' },
     email: { type: String, default: '' },
+    address: { type: String, default: '' },
     birthday: { type: String, default: '' },
     idNo: { type: String, default: '' }
 },

@@ -34,11 +34,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\nodeJs\mongodb-restful-api-login-register\routers" />
       <recent name="F:\nodeJs\mongodb-restful-api-login-register\controllers\province" />
     </key>
   </component>
@@ -71,16 +72,16 @@
       <workItem from="1578025863075" duration="1009000" />
       <workItem from="1578033579196" duration="6117000" />
       <workItem from="1578048098367" duration="736000" />
+      <workItem from="1578243661008" duration="5510000" />
+      <workItem from="1578276835796" duration="4000" />
+      <workItem from="1578420132222" duration="630000" />
+      <workItem from="1578501106599" duration="1445000" />
+      <workItem from="1578726347595" duration="1791000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/controllers/province/province.js" />
-      </list>
-    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="24" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578023806433">
@@ -91,10 +92,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578041257774" />
-    <state x="184" y="12" key="SettingsEditor" timestamp="1578036026313">
+    <state x="184" y="12" key="SettingsEditor" timestamp="1578244466763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="12" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578036026313" />
+    <state x="184" y="12" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578244466763" />
     <state x="0" y="0" width="607" height="738" key="find.popup" timestamp="1578035949232">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -104,9 +105,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controllers/users.js</url>
-          <line>90</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/controllers/province/provinces.js</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/province/provinces.js</url>
+          <line>64</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
