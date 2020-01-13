@@ -7,8 +7,8 @@ const Tokens = require('../models/Token')
 
 exports.create = (auth.optional, (req, res, next) => {
     var user ={
-        email:req.body.email,
-        password:req.body.password,
+        email:req.body.user.email,
+        password:req.body.user.password,
     }
 
     const finalUser = new Users(user);
@@ -52,10 +52,12 @@ exports.create = (auth.optional, (req, res, next) => {
 //POST login route (optional, everyone has access)
 exports.login = (auth.optional, (req, res, next) => {
     var user ={
-        email:req.body.email,
-        password:req.body.password,
+        email:req.body.user.email,
+        password:req.body.user.password,
     }
-    console.log(typeof user.password);
+    console.log('ss'+ user.password);
+    console.log('ss'+ user.email);
+
     if (!user.email) {
         return res.status(422).json({
             errors: {
@@ -104,7 +106,8 @@ exports.login = (auth.optional, (req, res, next) => {
             req.session.email = user.email;
             return res.send({
                 "status": 200,
-                user: user.toAuthJSON()
+                user: user.toAuthJSON(),
+                
             });
         } else {
             return res.send({
