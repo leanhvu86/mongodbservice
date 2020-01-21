@@ -67,7 +67,6 @@
 // })
 // module.exports = router
 
-
 // const express = require('express');
 // const app = express();
 
@@ -75,14 +74,16 @@
 
 // module.exports = app;
 
-module.exports = (app) => {
-    const users = require('../controllers/users');
+module.exports = app => {
+  const users = require("../controllers/users");
 
-    app.post('/register', users.create)
+  app.post("/register", users.create);
 
-    app.post('/login', users.login)
+  app.post("/login", users.login);
+  app.post("/test", users.test);
+  app.post("/loginv2", users.login);
 
-    app.get('/logout', users.logout)
+  app.get("/logout", users.logout);
 
-    app.get('/currentAuthen', users.currentAuthen)
-}
+  app.get("/currentAuthen", users.currentAuthen);
+};
