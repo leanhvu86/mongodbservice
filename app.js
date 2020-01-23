@@ -13,7 +13,8 @@ const passport = require("passport");
 require("./models/User");
 require("./db/db");
 require("./config/passport");
-require("./models/Province");
+require("./models/province");
+require("./models/route_rail")
 require("./config/facebookconfig");
 require("./config/googleconfig");
 //Configure isProduction variable
@@ -84,6 +85,7 @@ app.use(
 );
 require("./routers/province.route")(app);
 require("./routers/user.router")(app);
+require("./routers/route-rail.route")(app);
 if (!isProduction) {
   app.use(errorHandler());
 }
@@ -165,4 +167,4 @@ passport.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.listen(8000, () => console.log("Server running on http://localhost:3000/"));
+app.listen(8000, () => console.log("Server running on http://localhost:8000/"));

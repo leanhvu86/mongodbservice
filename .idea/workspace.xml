@@ -31,13 +31,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routers" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\nodeJs\mongodb-restful-api-login-register\routers" />
+      <recent name="F:\nodeJs\mongodb-restful-api-login-register\controllers\route-rail" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\nodeJs\mongodb-restful-api-login-register\routers" />
       <recent name="F:\nodeJs\mongodb-restful-api-login-register\controllers\province" />
@@ -77,6 +81,14 @@
       <workItem from="1578420132222" duration="630000" />
       <workItem from="1578501106599" duration="1445000" />
       <workItem from="1578726347595" duration="1791000" />
+      <workItem from="1578857197926" duration="2720000" />
+      <workItem from="1578889871151" duration="1039000" />
+      <workItem from="1578900535980" duration="1240000" />
+      <workItem from="1578913001452" duration="651000" />
+      <workItem from="1578932456372" duration="1693000" />
+      <workItem from="1579084664346" duration="1748000" />
+      <workItem from="1579155501981" duration="5356000" />
+      <workItem from="1579655523046" duration="4037000" />
     </task>
     <servers />
   </component>
@@ -88,18 +100,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="137" y="24" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1578023806433" />
-    <state x="463" y="111" key="FileChooserDialogImpl" timestamp="1578041257774">
+    <state x="426" y="179" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579656389505">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578041257774" />
+    <state x="426" y="179" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1579656389505" />
+    <state x="463" y="111" key="FileChooserDialogImpl" timestamp="1579167134102">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1579167134102" />
     <state x="184" y="12" key="SettingsEditor" timestamp="1578244466763">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="12" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578244466763" />
-    <state x="0" y="0" width="607" height="738" key="find.popup" timestamp="1578035949232">
+    <state x="0" y="0" width="607" height="738" key="find.popup" timestamp="1579657714876">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="0" y="0" width="607" height="738" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1578035949232" />
+    <state x="0" y="0" width="607" height="738" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1579657714876" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -111,7 +127,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/controllers/province/provinces.js</url>
-          <line>64</line>
+          <line>65</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

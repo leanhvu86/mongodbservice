@@ -35,4 +35,4 @@ const PassengerSchema = new Schema({
         timestamps: true
     });
 
-module.exports = mongoose.model('Passenger', PassengerSchema);
+module.exports = mongoose.model('Passengers', PassengerSchema);

@@ -7,4 +7,4 @@ const ProvinceSchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Province', ProvinceSchema);
+module.exports = mongoose.model('Provinces', ProvinceSchema);

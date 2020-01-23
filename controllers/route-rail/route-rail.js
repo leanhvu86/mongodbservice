@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const Province = mongoose.model('Provinces');
-exports.getProvinces = (async (req, res, next) => {
+const RouteRails = mongoose.model('RouteRails');
+exports.getRouteRails= (async (req, res, next) => {
     // try {
     //     const provinces = Province.find({}, '-_id');
     //     console.log('danh sach tinh tp' + provinces);
@@ -17,7 +17,7 @@ exports.getProvinces = (async (req, res, next) => {
     //         'message': 'provinces not  found'
     //     })
     // }
-    await Province.find
+    await RouteRails.find
         // ({}, function(err, provinces) {
         //     console.log(provinces);
         //     if (provinces.length===0){
@@ -32,66 +32,66 @@ exports.getProvinces = (async (req, res, next) => {
         //     }
         // });
         ()
-        .then(provinces => {
-            console.log('tìm provice' + provinces);
-            res.status(200).send(provinces
+        .then(routeRails => {
+            console.log('tìm RouteRails' + routeRails);
+            res.status(200).send(routeRails
             )
         }).catch(err => {
-            console.log('not found province');
+            console.log('not found RouteRails');
             res.send({
                 'status': 404,
-                'message': err.message || 'Some error occurred while finding province'
+                'message': err.message || 'Some error occurred while finding RouteRails'
             })
         })
 });
 
-exports.findProvince = async (req, res, next) => {
-    console.log(req.body.provinceName)
-    await Province.findOne({provinceName: req.body.provinceName}, function (err, province) {
+exports.findRouteRails = async (req, res, next) => {
+    await RouteRails.findOne({nameRoute: req.body.nameRoute}, function (err, routeRails) {
         if (err) {
             console.log(err);
             return res.send({
                 'status': 401,
-                'message': 'province not found'
+                'message': 'RouteRails not found'
             })
         } else {
             res.send({
                 'status': 200,
-                province: province
+                province: routeRails
             })
         }
     })
 }
 exports.create = (req, res) => {
-    const province = new Province({
-        provinceId: req.body.provinceId,
-        provinceName: req.body.provinceName,
+    const routeRails = new RouteRails({
+        routeId: req.body.routeId,
+        nameRoute: req.body.nameRoute,
+        description : req.body.description,
         status: 1
     })
-
-    province.save()
+    console.log(routeRails+'save routerail')
+    routeRails.save()
         .then(data => {
             res.status(200).send(data)
         }).catch(err => {
         res.status(500).send({
-            message: err.message || 'Some error occurred while creating the note'
+            message: err.message || 'Some error occurred while creating the route rail'
         })
     })
 }
 
 exports.createMultiple = (req, res) => {
-    console.log(req.body.provinces)
-    Province.insertMany(req.body.provinces, function (err, provinces) {
+    console.log(req.body.routeRails)
+    RouteRails.insertMany(req.body.routeRails, function (err, routeRails) {
         if (err) {
             res.status(500).send({
-                message: 'Luu multiple that bai'
+                message: 'Luu RouteRails that bai'
             })
             console.log(err);
         } else{
             res.status(200).send({
-                message:'Luu Multiple thanh cong'
+                message:'Luu RouteRails thanh cong'
             })
-            console.log("provinces Added Successfully");
+            console.log("RouteRails Added Successfully");
         }
     });
 }

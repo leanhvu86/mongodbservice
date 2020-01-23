@@ -28,4 +28,4 @@ const StationRouteSchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('StationRoute', StationRouteSchema);
+module.exports = mongoose.model('StationRoutes', StationRouteSchema);

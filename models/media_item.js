@@ -8,4 +8,4 @@ const MediaItemSchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Media_item', MediaItemSchema);
+module.exports = mongoose.model('Media_items', MediaItemSchema);
