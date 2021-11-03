@@ -27,6 +27,6 @@
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "test": "^0.6.0",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   }
 }
